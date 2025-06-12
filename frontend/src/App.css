@@ -1,0 +1,234 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the root element takes full viewport height */
+}
+
+.navbar {
+  background-color: #333;
+  padding: 1rem;
+  display: flex;
+  justify-content: center; /* Center the title */
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-title {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Remove nav-link and nav-button styles as they are no longer used */
+/* .nav-link, .nav-button styles are removed */
+
+/* Main content container for pages */
+.container {
+  flex-grow: 1; /* Allows container to take available space */
+  padding: 2rem;
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  align-items: flex-start;   /* Aligns content to the start (top) for better scrollability */
+  width: 100%; /* Ensure container takes full width */
+}
+
+/* Search Page Container */
+.search-page-container {
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 960px; /* Wider for search results grid */
+  margin-top: 2rem; /* Provide some space from the navbar */
+  text-align: center;
+}
+
+.search-page-container h1 {
+  color: #007bff;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.search-page-container h2 {
+  color: #555;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+
+/* Search Form Styling */
+.search-form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  justify-content: center; /* Center form elements */
+}
+
+.search-input {
+  flex-grow: 1; /* Allows input to take more space */
+  padding: 0.8rem 1.2rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  max-width: 400px; /* Limit input width */
+}
+
+.media-select {
+  padding: 0.8rem 1.2rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: white;
+}
+
+.search-button {
+  padding: 0.8rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+/* Message styling (loading, no results, no favorites) */
+.message {
+  font-size: 1.1rem;
+  color: #666;
+  padding: 1rem;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+/* API Error Message (retained from previous task) */
+.api-error-message {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+    text-align: center;
+}
+
+
+/* Results Grid Styling */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Responsive grid */
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.result-card {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out;
+  word-wrap: break-word; /* Ensure text breaks within card */
+  overflow: hidden; /* Hide overflow if text is too long */
+}
+
+.result-card:hover {
+  transform: translateY(-5px);
+}
+
+.result-artwork {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  object-fit: cover; /* Ensure image covers the area without distortion */
+}
+
+.result-details {
+  flex-grow: 1; /* Allows details to take available space */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Push button to bottom */
+  width: 100%;
+}
+
+.result-name {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.result-artist {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+
+.result-release, .result-kind {
+  color: #888;
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+}
+
+.result-preview-audio {
+  width: 100%;
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.favorite-button {
+  background-color: #28a745; /* Green for add */
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 0.8rem;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Full width button */
+}
+
+.favorite-button.favorited,
+.favorite-button.remove-favorite {
+  background-color: #dc3545; /* Red for remove */
+}
+
+.favorite-button:hover {
+  background-color: #218838;
+}
+
+.favorite-button.favorited:hover,
+.favorite-button.remove-favorite:hover {
+  background-color: #c82333;
+}
+
+.favorite-card {
+  border-color: #007bff; /* Highlight favorite cards */
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+}
+
+/* Remove old auth form and todo list specific styles */
+/* .auth-form-container, .form-group, input.input-error, .error-message, .auth-form-container button, .add-task-form, .todo-list, .todo-item, .todo-actions, .edit-task-form, .edit-task-form input, .edit-task-form button styles are removed */
