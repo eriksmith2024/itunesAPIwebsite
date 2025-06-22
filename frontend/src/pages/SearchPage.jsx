@@ -31,11 +31,21 @@ function SearchPage() {
     }
 
     try {
-      // Call backend's search proxy endpoint
-      const response = await axios.get(`http://localhost:8080/search?term=${encodeURIComponent(searchTerm)}&media=${mediaType}`);
+      // --- START OF UPDATE ---
+      // Define the base URL for the backend API.
+      // import.meta.env.VITE_BACKEND_URL will fetch the value from the .env file
+      // (e.g., VITE_BACKEND_URL=https://itunesapiwebsite.onrender.com)
+      // This allows  frontend to correctly connect to deployed backend.
+      const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
+      // Call backend's search proxy endpoint using the dynamically set BASE_URL
+      const response = await axios.get(`${BASE_URL}/search?term=${encodeURIComponent(searchTerm)}&media=${mediaType}`);
+      // --- END OF UPDATE ---
+
       setSearchResults(response.data);
     } catch (err) {
       console.error("Error fetching search results:", err);
+      // More robust error message display
       setError(err.response?.data?.message || 'Failed to fetch search results. Please try again.');
     } finally {
       setLoading(false);
